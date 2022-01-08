@@ -10,7 +10,7 @@ use FacebookAds\Object\ServerSide\DeliveryCategory;
 use FacebookAds\Object\ServerSide\Event;
 use FacebookAds\Object\ServerSide\EventRequest;
 use FacebookAds\Object\ServerSide\UserData;
-use Config\Setting;
+use App\Config\Setting as Setting;
 /**
  *
  */
@@ -24,7 +24,7 @@ class Purchase
     $access_token = Setting::getAccessToken();
     $pixel_id = Setting::getPixelId();
     echo "token : ".$access_token." ~ pixel id : ".$pixel_id;
-    $this->api = new Api::init(null, null, $access_token);
+    $this->api = new Api(null, null, $access_token); // ::init
     $this->api->setLogger(new CurlLogger());
 
     $user_data = $this->setUserData($data);
