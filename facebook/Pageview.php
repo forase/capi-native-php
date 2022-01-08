@@ -1,9 +1,10 @@
 <?php
-use Config\Setting;
 
+//require_once '/../.config/Setting.php';
+require_once(realpath(dirname(__FILE__).'/../.config/Setting.php'));
 
 if(!isset($_COOKIE['USERID']) || empty($_COOKIE['USERID'])){
-    $externalId = Setting::getExternalId();
+    $externalId = Setting::sgetExternalId();
     setcookie('USERID', $externalId, time()+14*24*3600);
     $_COOKIE['USERID'] = $externalId;
 }
