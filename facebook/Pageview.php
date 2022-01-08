@@ -1,7 +1,8 @@
 <?php
 
-//require_once '/../.config/Setting.php';
-require_once(realpath(dirname(__FILE__).'/../.config/Setting.php'));
+use Config\Setting;
+
+// require_once(realpath(dirname(__FILE__).'/../.config/Setting.php'));
 
 if(!isset($_COOKIE['USERID']) || empty($_COOKIE['USERID'])){
     $externalId = Setting::sgetExternalId();
