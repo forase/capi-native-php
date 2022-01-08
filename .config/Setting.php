@@ -6,30 +6,60 @@ namespace Config;
 class Setting
 {
 
-  private $ACCESS_TOKEN = '';
-  private $SHEET_ID = '';
-  private $EXTERNALID='';
-  private $GETPIXELID='';
+  private static $ACCESS_TOKEN = '';
+  private static $SHEET_ID = '';
+  private static $EXTERNALID='';
+  private static $GETPIXELID='';
 
-  public static function __construct()
+  /**
+   * The Singleton's constructor should always be private to prevent direct
+   * construction calls with the `new` operator.
+   */
+  protected function __construct() { }
+
+  /**
+   * Singletons should not be cloneable.
+   */
+  protected function __clone() { }
+
+  /**
+   * Singletons should not be restorable from strings.
+   */
+  public function __wakeup()
   {
-    // code...
+      throw new \Exception("Cannot unserialize a singleton.");
   }
 
   public function getAccessToken(){
-    return $this->ACCESS_TOKEN;
+    $cls = static::class;
+    if (!isset(self::$instances[$cls])) {
+        self::$instances[$cls] = new static();
+    }
+    return self::$ACCESS_TOKEN[$cls];
   }
 
   public function getSheetId(){
-    return $this->SHEET_ID;
+    $cls = static::class;
+    if (!isset(self::$instances[$cls])) {
+        self::$instances[$cls] = new static();
+    }
+    return self::$SHEET_ID[$cls];
   }
 
   public function sgetExternalId(){
-    return $this->EXTERNALID;
+    $cls = static::class;
+    if (!isset(self::$instances[$cls])) {
+        self::$instances[$cls] = new static();
+    }
+    return self::$EXTERNALID[$cls];
   }
 
   public function getPixelId(){
-    return $this->GETPIXELID;
+    $cls = static::class;
+    if (!isset(self::$instances[$cls])) {
+        self::$instances[$cls] = new static();
+    }
+    return self::$GETPIXELID[$cls];
   }
 
 }
