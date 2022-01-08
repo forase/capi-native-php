@@ -3,7 +3,7 @@ namespace Config;
 /**
  * General Setting
  */
-static class Setting
+class Setting
 {
 
   private $ACCESS_TOKEN = '';
@@ -11,7 +11,7 @@ static class Setting
   private $EXTERNALID='';
   private $GETPIXELID='';
 
-  function __construct()
+  public static function __construct()
   {
     // code...
   }
