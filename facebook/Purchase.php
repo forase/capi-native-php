@@ -1,4 +1,6 @@
 <?php
+namespace App\Facebook;
+
 use FacebookAds\Api;
 use FacebookAds\Logger\CurlLogger;
 use FacebookAds\Object\ServerSide\ActionSource;
@@ -21,6 +23,7 @@ class Purchase
   {
     $access_token = Setting::getAccessToken();
     $pixel_id = Setting::getPixelId();
+    echo "token : ".$access_token." ~ pixel id : ".$pixel_id;
     $this->api = new Api::init(null, null, $access_token);
     $this->api->setLogger(new CurlLogger());
 
