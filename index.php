@@ -7,6 +7,12 @@
     }
     else{
         readfile('pages/home.html');
-        //$pageview = new Pageview();
+        try{
+            include 'facebook/pageview.php';
+            
+        }catch (exception $e){
+            echo 'caugt exception', $e->getMessage();
+        }
+        
     }
 ?>
