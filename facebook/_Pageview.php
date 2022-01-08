@@ -21,6 +21,7 @@ class Pageview
 
   function __construct()
   {
+    echo "hello pageview";
     if(!isset($_COOKIE['USERID']) || empty($_COOKIE['USERID'])){
         $setting = new Setting();
         $externalId = Setting::sgetExternalId();

@@ -6,8 +6,7 @@
     // include_once 'facebook/Purchase.php';
     include_once 'facebook/_Pageview.php';
 
-    $path = Config;
-    echo $path;
+    
 
     error_reporting(E_ALL);
     ini_set('display_errors', 'on');
