@@ -8,8 +8,10 @@ class Setting
 
   private static $ACCESS_TOKEN = '';
   private static $SHEET_ID = '';
-  private static $EXTERNALID='';
-  private static $GETPIXELID='';
+  private static $EXTERNAL_ID= '';
+  private static $PIXEL_ID= '';
+  private static $EVENT_ID= '';
+  private static $TEST_KEY= '';
 
   /**
    * The Singleton's constructor should always be private to prevent direct
@@ -30,36 +32,49 @@ class Setting
       throw new \Exception("Cannot unserialize a singleton.");
   }
 
-  public function getAccessToken(){
-    $cls = static::class;
-    if (!isset(self::$instances[$cls])) {
-        self::$instances[$cls] = new static();
-    }
-    return self::$ACCESS_TOKEN[$cls];
+  public static function getAccessToken(){
+    // $cls = static::class;
+    // if (!isset(self::$ACCESS_TOKEN[$cls])) {
+    //     self::$ACCESS_TOKEN[$cls] = new static();
+    // }
+    // return self::$ACCESS_TOKEN[$cls];
+    return self::$ACCESS_TOKEN;
   }
 
-  public function getSheetId(){
-    $cls = static::class;
-    if (!isset(self::$instances[$cls])) {
-        self::$instances[$cls] = new static();
-    }
-    return self::$SHEET_ID[$cls];
+  public static function setExternalId(){
+    // $cls = static::class;
+    // if (!isset(self::$EXTERNAL_ID[$cls])) {
+    //     self::$EXTERNAL_ID[$cls] = new static();
+    // }
+    // return self::$EXTERNAL_ID[$cls];
+    return self::$EXTERNAL_ID;
   }
 
-  public function sgetExternalId(){
-    $cls = static::class;
-    if (!isset(self::$instances[$cls])) {
-        self::$instances[$cls] = new static();
-    }
-    return self::$EXTERNALID[$cls];
+  public static function getPixelId(){
+    // $cls = static::class;
+    // if (!isset(self::$PIXEL_ID[$cls])) {
+    //     self::$PIXEL_ID[$cls] = new static();
+    // }
+    // return self::$PIXEL_ID[$cls];
+    return self::$PIXEL_ID;
   }
 
-  public function getPixelId(){
-    $cls = static::class;
-    if (!isset(self::$instances[$cls])) {
-        self::$instances[$cls] = new static();
-    }
-    return self::$GETPIXELID[$cls];
+  public static function getEventId(){
+    // $cls = static::class;
+    // if (!isset(self::$PIXEL_ID[$cls])) {
+    //     self::$PIXEL_ID[$cls] = new static();
+    // }
+    // return self::$PIXEL_ID[$cls];
+    return self::$EVENT_ID;
+  }
+
+  public static function getTestKey(){
+    // $cls = static::class;
+    // if (!isset(self::$TEST_KEY[$cls])) {
+    //     self::$TEST_KEY[$cls] = new static();
+    // }
+    // return self::$TEST_KEY[$cls];
+    return self::$TEST_KEY;
   }
 
 }
