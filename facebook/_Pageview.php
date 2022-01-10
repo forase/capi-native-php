@@ -1,6 +1,5 @@
 <?php
 namespace App\Facebook;
-
 use FacebookAds\Api;
 use FacebookAds\Logger\CurlLogger;
 use FacebookAds\Object\ServerSide\ActionSource;
@@ -23,7 +22,7 @@ class Pageview
   {
     if(!isset($_COOKIE['USERID']) || empty($_COOKIE['USERID'])){
         $externalId = Setting::setExternalId();
-        setcookie('USERID', $externalId, time()+14*24*3600);
+        //setcookie('USERID', $externalId, time()+14*24*3600);
         $_COOKIE['USERID'] = $externalId;
     }
 
@@ -38,35 +37,24 @@ class Pageview
 
     array_push($this->events, $event);
 
-    try {
-      $request = (new EventRequest($pixel_id))
-                  ->setTestEventCode(Setting::getTestKey())
-                  ->setEvents($this->events);
-      $response = $request->execute();
-    } catch(Facebook\Exceptions\FacebookResponseException $e) {
-      echo 'Graph returned an error: ' . $e->getMessage();
-      exit;
-    } catch(Facebook\Exceptions\FacebookSDKException $e) {
-      echo 'Facebook SDK returned an error: ' . $e->getMessage();
-      exit;
-    }
-
-
+    $request = (new EventRequest($pixel_id))
+                ->setTestEventCode(Setting::getTestKey())
+                ->setEvents($this->events);
+    $response = $request->execute();
   }
-
   public function setUserData(){
     return (new UserData())
     // It is recommended to send Client IP and User Agent for Conversions API Events.
     ->setClientIpAddress($_SERVER['REMOTE_ADDR'])
     ->setClientUserAgent($_SERVER['HTTP_USER_AGENT'])
-    ->setExternalId($_COOKIE['USERID'])
+   // ->setExternalId($_COOKIE['USERID'])
     ->setFbc('fb.1.1554763741205.AbCdEfGhIjKlMnOpQrStUvWxYz1234567890')
     ->setFbp('fb.1.1558571054389.1098115397');
     // ->setFbc($_COOKIE['_fbc'])
     // ->setExternalId($_COOKIE['USERID'])
     // ->setFbp($_COOKIE['_fbp']);
   }
-
+  
   public function setEvent($user_data,$eventSourceUrl)
   {
     return (new Event())
@@ -78,5 +66,4 @@ class Pageview
     ->setActionSource(ActionSource::WEBSITE);
   }
 }
-
 ?>
