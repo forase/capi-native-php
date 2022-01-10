@@ -3,8 +3,6 @@
     use App\Facebook;
     include_once 'facebook/Purchase.php';
     include_once 'facebook/_Pageview.php';
-
-
     error_reporting(E_ALL);
     ini_set('display_errors', 'on');
     if(isset($_POST['submit'])){
