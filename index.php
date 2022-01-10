@@ -1,6 +1,6 @@
 <?php
-    ob_start();
     namespace App;
+    ob_start();
     require __DIR__ . '/vendor/autoload.php';
     use App\Facebook;
     include_once 'facebook/Purchase.php';
