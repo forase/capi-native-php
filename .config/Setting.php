@@ -6,7 +6,7 @@ namespace App\Config;
 class Setting
 {
 
-  private static $ACCESS_TOKEN = 'EAAMe6ZCZBypBABAG4nKxc5NrTsAH7CYq40HxCw5oypM2qk4eKu7O0Pl1oOs9P97RzFOUNKefSFb2gxps65l7Px09PpQBYL5D34BQRJbl8y8ZAMul3JNGlfYSWgYhsSKd5s1ZAJeQ1MQLO7brZCHCi40AQPOgdc9tf78KZAJPhzAi5dsqZCMujhQ';
+  private static $ACCESS_TOKEN = 'EAAMe6ZCZBypBABAJq8A5BvhIZAh1oDy2uWoV2ihg9oXwseC4mOfbD13kvRR56kRzqyuTBoZBvi1SM33s17Xntv3OFAqQW89qouh7wNApond6QD9VwJOV1HOr6RgMsLuxkOXUTZC0VTvOlJ0ZCZBo5eZCw79rZAdwR5lw18YjpX1R2hXlKsQdtOKLL';
   private static $SHEET_ID = '';
   private static $EXTERNAL_ID= '';
   private static $PIXEL_ID= 409961910674232;
