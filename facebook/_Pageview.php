@@ -30,7 +30,7 @@ class Pageview
 
     $access_token = Setting::getAccessToken();
     $pixel_id = Setting::getPixelId();
-    Api::init(null, null, $access_token);
+    Api::init(null, null, $access_token,false);
     $this->api = Api::instance();
     $this->api->setLogger(new CurlLogger());
     $user_data = $this->setUserData();
