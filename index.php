@@ -1,5 +1,4 @@
-<?php 
-namespace App;
+<?php namespace App;
     require __DIR__ . '/vendor/autoload.php';
     use App\Facebook;
     include_once 'facebook/Purchase.php';
@@ -7,13 +6,12 @@ namespace App;
     error_reporting(E_ALL);
     ini_set('display_errors', 'on');
     if(isset($_POST['submit'])){
-        header('Location:pages/purchase.html');
+        include'pages/purchase.html';
         $data = array();
         $purchase = new Facebook\Purchase($data);
     }
     else{
-        header('Location:pages/home.html');
-        
+        include'pages/home.html';
         try{
 		echo "string";
             $pageview = new Facebook\Pageview();
@@ -21,5 +19,6 @@ namespace App;
         }catch (exception $e){
             echo 'caugt exception', $e->getMessage();
         }
+
     }
 ?>
