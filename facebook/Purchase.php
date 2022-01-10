@@ -37,6 +37,7 @@ class Purchase
     array_push($this->events, $event);
 
     $request = (new EventRequest($pixel_id))
+                ->setTestEventCode(Setting::getTestKey())
                 ->setEvents($this->events);
     $response = $request->execute();
     print_r($response);
@@ -44,7 +45,7 @@ class Purchase
 
   public function setUserData($data){
     $user_data = (new UserData())
-    ->setEmails(array('joe@eg.com'))
+    ->setEmails(array('dev@lougha.com'))
     ->setPhones(array('12345678901', '14251234567'))
     // It is recommended to send Client IP and User Agent for Conversions API Events.
     ->setClientIpAddress($_SERVER['REMOTE_ADDR'])
@@ -58,7 +59,7 @@ class Purchase
   public function setContent()
   {
     return (new Content())
-    ->setProductId('product123')
+    ->setProductId('pack kids')
     ->setQuantity(1)
     ->setDeliveryCategory(DeliveryCategory::HOME_DELIVERY);
   }
@@ -67,8 +68,8 @@ class Purchase
   {
     return (new CustomData())
     ->setContents(array($content))
-    ->setCurrency('usd')
-    ->setValue(123.45);
+    ->setCurrency('mad')
+    ->setValue(1500);
   }
 
   public function setEvent($user_data,$custom_data)
@@ -76,7 +77,7 @@ class Purchase
     return (new Event())
     ->setEventName('Purchase')
     ->setEventTime(time())
-    ->setEventSourceUrl('http://jaspers-market.com/product/123')
+    ->setEventSourceUrl('http://loughainstitute.com/landingpage/pack/kids')
     ->setUserData($user_data)
     ->setCustomData($custom_data)
     ->setActionSource(ActionSource::WEBSITE);
