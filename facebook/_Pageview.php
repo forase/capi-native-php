@@ -41,8 +41,9 @@ class Pageview
     array_push($this->events, $event);
 
     $request = (new EventRequest($pixel_id))
-                ->setTestEventCode(Setting::getTestKey())
-                ->setEvents($events);
+                ->setTestEventCode(Config\Setting::getTestKey())
+                ->setEvents($this->events);
+    printf($request);
     $response = $request->execute();
   }
 
@@ -67,8 +68,8 @@ class Pageview
     ->setEventTime(time())
     ->setEventSourceUrl($eventSourceUrl)
     ->setUserData($user_data)
-    ->setEventId(Config\Setting::getEventId())
-    ->setActionSource(ActionSource::WEBSITE);
+    ->setEventId(Config\Setting::getEventId());
+    // ->setActionSource(ActionSource::WEBSITE);
   }
 }
 
