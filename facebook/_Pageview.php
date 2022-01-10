@@ -10,7 +10,7 @@ use FacebookAds\Object\ServerSide\DeliveryCategory;
 use FacebookAds\Object\ServerSide\Event;
 use FacebookAds\Object\ServerSide\EventRequest;
 use FacebookAds\Object\ServerSide\UserData;
-use App\Config;
+use App\Config\Setting;
 
 /**
  *
@@ -23,13 +23,13 @@ class Pageview
   function __construct()
   {
     if(!isset($_COOKIE['USERID']) || empty($_COOKIE['USERID'])){
-        $externalId = Config\Setting::setExternalId();
+        $externalId = Setting::setExternalId();
         setcookie('USERID', $externalId, time()+14*24*3600);
         $_COOKIE['USERID'] = $externalId;
     }
 
-    $access_token = Config\Setting::getAccessToken();
-    $pixel_id = Config\Setting::getPixelId();
+    $access_token = Setting::getAccessToken();
+    $pixel_id = Setting::getPixelId();
     Api::init(null, null, $access_token);
     $this->api = Api::instance();
     $this->api->setLogger(new CurlLogger());
@@ -41,7 +41,7 @@ class Pageview
     array_push($this->events, $event);
 
     $request = (new EventRequest($pixel_id))
-                ->setTestEventCode(Config\Setting::getTestKey())
+                ->setTestEventCode(Setting::getTestKey())
                 ->setEvents($this->events);
     printf($request);
     $response = $request->execute();
@@ -68,7 +68,7 @@ class Pageview
     ->setEventTime(time())
     ->setEventSourceUrl($eventSourceUrl)
     ->setUserData($user_data)
-    ->setEventId(Config\Setting::getEventId());
+    ->setEventId(Setting::getEventId());
     // ->setActionSource(ActionSource::WEBSITE);
   }
 }
