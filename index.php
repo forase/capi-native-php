@@ -13,7 +13,6 @@
     else{
         readfile('pages/home.html');
         try{
-            // include 'facebook/pageview.php';
             $pageview = new Facebook\Pageview();
         }catch (exception $e){
             echo 'caugt exception', $e->getMessage();
