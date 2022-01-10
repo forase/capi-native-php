@@ -38,10 +38,20 @@ class Pageview
 
     array_push($this->events, $event);
 
-    $request = (new EventRequest($pixel_id))
-                ->setTestEventCode(Setting::getTestKey())
-                ->setEvents($this->events);
-    $response = $request->execute();
+    try {
+      $request = (new EventRequest($pixel_id))
+                  ->setTestEventCode(Setting::getTestKey())
+                  ->setEvents($this->events);
+      $response = $request->execute();
+    } catch(Facebook\Exceptions\FacebookResponseException $e) {
+      echo 'Graph returned an error: ' . $e->getMessage();
+      exit;
+    } catch(Facebook\Exceptions\FacebookSDKException $e) {
+      echo 'Facebook SDK returned an error: ' . $e->getMessage();
+      exit;
+    }
+
+
   }
 
   public function setUserData(){
