@@ -6,12 +6,12 @@ namespace App\Config;
 class Setting
 {
 
-  private static $ACCESS_TOKEN = 'EAAMe6ZCZBypBABAAQDtvZCLTLiIMP5d0QqPp46gFwaiVK50ZChss2ECB1tMXFCfjTv0blkgyyZCmgTehtdI4a7xbZBGt1LUmRgJZB5r0GoWbilr3A1gRITGxQb6JW4jjZBSPVS7BhfFLUljVKqH55X93HPgUF1insxCD55QjiwPKXPllvcLRnsHiGb5sWEvz8NMZD';
+  private static $ACCESS_TOKEN = 'EAAMe6ZCZBypBABACpUhbS2JtI5RrJPzXzqgx6c2P8RVmkNbZBruOVuNNPfOTmBnl10f0lxJa8FabgUZCt22Ba8Ttw2Kx06NIZCqmGs5vn9R79pc5ATsyqvxDtHhA5gZAOcG4ETkHSvbDGmSyTKLzf9DoPXkOS9KIXdZC4ZABAfcRlwppQbXMZCPPFyqzqoOQtWwAZD';
   private static $SHEET_ID = '';
   private static $EXTERNAL_ID= '';
   private static $PIXEL_ID= 409961910674232;
   private static $EVENT_ID= '';
-  private static $TEST_KEY= 'TEST72964';
+  private static $TEST_KEY= 'TEST50572';
 
   /**
    * The Singleton's constructor should always be private to prevent direct
