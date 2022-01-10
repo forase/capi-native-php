@@ -33,7 +33,6 @@ class Pageview
     Api::init(null, null, $access_token);
     $this->api = Api::instance();
     $this->api->setLogger(new CurlLogger());
-    echo "token : ".$access_token." ~ pixel id : ".$pixel_id;
     $user_data = $this->setUserData();
     $eventSourceUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     $event = $this->setEvent($user_data,$eventSourceUrl);
@@ -43,7 +42,6 @@ class Pageview
     $request = (new EventRequest($pixel_id))
                 ->setTestEventCode(Setting::getTestKey())
                 ->setEvents($this->events);
-    printf($request);
     $response = $request->execute();
   }
 
@@ -62,14 +60,13 @@ class Pageview
 
   public function setEvent($user_data,$eventSourceUrl)
   {
-    echo $eventSourceUrl;
     return (new Event())
     ->setEventName('PageView')
     ->setEventTime(time())
     ->setEventSourceUrl($eventSourceUrl)
     ->setUserData($user_data)
-    ->setEventId(Setting::getEventId());
-    // ->setActionSource(ActionSource::WEBSITE);
+    ->setEventId(Setting::getEventId())
+    ->setActionSource(ActionSource::WEBSITE);
   }
 }
 
