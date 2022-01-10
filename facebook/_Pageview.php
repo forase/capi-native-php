@@ -11,7 +11,6 @@ use FacebookAds\Object\ServerSide\Event;
 use FacebookAds\Object\ServerSide\EventRequest;
 use FacebookAds\Object\ServerSide\UserData;
 use App\Config\Setting;
-
 /**
  *
  */
