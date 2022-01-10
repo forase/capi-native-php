@@ -68,5 +68,4 @@ class Pageview
     ->setActionSource(ActionSource::WEBSITE);
   }
 }
-
 ?>
