@@ -40,7 +40,6 @@ class Purchase
                 ->setTestEventCode(Setting::getTestKey())
                 ->setEvents($this->events);
     $response = $request->execute();
-    print_r($response);
   }
 
   public function setUserData($data){
@@ -74,10 +73,11 @@ class Purchase
 
   public function setEvent($user_data,$custom_data)
   {
+    $eventSourceUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     return (new Event())
     ->setEventName('Purchase')
     ->setEventTime(time())
-    ->setEventSourceUrl('http://loughainstitute.com/landingpage/pack/kids')
+    ->setEventSourceUrl($eventSourceUrl)
     ->setUserData($user_data)
     ->setCustomData($custom_data)
     ->setActionSource(ActionSource::WEBSITE);
